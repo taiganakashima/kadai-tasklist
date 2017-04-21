@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
 	before_action :set_task,only:[:show,:edit,:update,:destroy]
 
-  def index
+	def index
 	 @tasks = Task.all
 	end
 
@@ -15,13 +15,13 @@ class TasksController < ApplicationController
 	def create
 	 @task = Task.new(task_params)
 	
-	if @task.save
-	  flash[:success] = 'Taskが作成されました'
-	  redirect_to @task
-	else
-	  flash.now[:danger] = 'Taskが作成されませんでした'
-	　render :new
-	end
+		if @task.save
+			flash[:success] = 'Taskが作成されました'
+			redirect_to @task
+		else
+			flash.now[:danger] = 'Taskが作成されませんでした'
+	　	render :new
+		end
 	end
 	def edit
 	end
@@ -48,7 +48,7 @@ class TasksController < ApplicationController
 	
 	def set_task
 	  @task = Task.find(params[:id])
-  end
+	end
   
 	#Strong Parameter
 	def task_params
